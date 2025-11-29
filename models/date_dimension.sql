@@ -1,7 +1,7 @@
 with cte as (
     select 
     to_timestamp(started_at) as STARTED_AT
-    from {{ source('demo', 'bike') }}  
+    from {{ ref("stage_bike") }}  
     where try_to_timestamp(started_at) is not null
 ) select 
     *,
